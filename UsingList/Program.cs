@@ -27,9 +27,13 @@ namespace AddressBook
                 Console.WriteLine("\n**************************************************************");
                                 Console.WriteLine("\n 1. Create record in Address Book");
                                 Console.WriteLine("\n 2. Display records of  Address Book");
-                                
+                                Console.WriteLine("\n 3. Add record to Address Book");
+                                Console.WriteLine("\n 4. Update record from Address Book");
+                                Console.WriteLine("\n 5.  Delete record from Address Book");
+                                Console.WriteLine("\n 6.  To exit from Address Book");
 
-                      Console.WriteLine("\n***************************************************************");
+
+                Console.WriteLine("\n***************************************************************");
 
                           Console.WriteLine("\n Enter choice from menu:");
                            ch= Convert.ToInt32(Console.ReadLine());
@@ -48,7 +52,7 @@ namespace AddressBook
 
                             for (int i = 0; i < n; i++)
                             {
-                                AddressBook obj = AddressBook.accept(n);// calling display function
+                                AddressBook obj = AddressBook.accept();// calling display function
 
                                 list.Add(obj);
                             }
@@ -63,8 +67,8 @@ namespace AddressBook
 
                             AddressBook.display(list);// calling display method
                             break;
-                           
-case 3: //UC2 - Adding  address
+
+                        case 3: //UC2 - Adding  address
                             Console.WriteLine("-----------------------------------------------------");
 
                             Console.WriteLine("Adding address to the book:");
@@ -74,7 +78,7 @@ case 3: //UC2 - Adding  address
 
                             for (int i = 0; i < n1; i++)
                             {
-                                AddressBook obj = AddressBook.accept(n1);// calling display function
+                                AddressBook obj = AddressBook.accept();// calling display function
 
                                 list.Add(obj);
                             }
@@ -83,7 +87,39 @@ case 3: //UC2 - Adding  address
                             Console.WriteLine("----------------------------------------------------");
 
                             break;
-}
+                        case 4://UC3-edit  address
+                            Console.WriteLine("----------------------------------------------------");
+
+                            Console.WriteLine("Update record from address book:");
+                            Console.WriteLine("Enter  first name:");
+                            string fn = Console.ReadLine();
+                            Console.WriteLine("---------------------------------------------------");
+
+                            Console.WriteLine("Enter  last name:");
+                            string ln = Console.ReadLine();
+                            AddressBook.Update(list, fn, ln);
+
+                            break;
+                        case 5: //UC4-Delete  address
+                            Console.WriteLine("---------------------------------------------------");
+
+                            Console.WriteLine("Delete record from address book:");
+
+                            Console.WriteLine("Enter  first name:");
+                            string dfn = Console.ReadLine();
+                            Console.WriteLine("---------------------------------------------------");
+
+                            Console.WriteLine("Enter  last name:");
+                            string dln = Console.ReadLine();
+                            AddressBook.Delete(list, dfn, dln);
+                            break;
+
+                        case 6:
+                            Console.WriteLine("----------------------------------------");
+                            Console.WriteLine("Thank you!, Exiting ..");
+                            break;
+                           
+                    }
                 }
                 else
                 {
@@ -91,10 +127,14 @@ case 3: //UC2 - Adding  address
 
                 }
 
-            } while (ch!=2);
+            } while (ch!=6);
 
             Console.ReadKey();
 
         }
+
+
+        
+
     }
 }

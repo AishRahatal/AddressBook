@@ -136,7 +136,7 @@ namespace AddressBook
 //============================================================
          
         // Accept method  to get user input
-        public static AddressBook accept(int n)
+        public static AddressBook accept()
         {
 
             //static int id;
@@ -182,8 +182,7 @@ namespace AddressBook
 
         }
 
-       
- // Displaying address book(which details have entered by user)
+        // Displaying address book(which details have entered by user)
         public static void display(List<AddressBook> list) 
         {
 
@@ -204,3 +203,170 @@ namespace AddressBook
 
         }
 
+
+        //Updating details in existing record
+        internal static int Update(List<AddressBook> list, string fn, string ln)
+        {
+           
+            foreach (var obj in list)
+            {
+               
+                    if (fn == obj.fname && ln == obj.lname)
+                    { 
+
+                        int choice = 0;
+                        while (choice != 6)
+                        {
+
+                            Console.WriteLine("----------------------------------------");
+                            Console.WriteLine("Enter 1 :to chnage name  ");
+
+                            Console.WriteLine("Enter 2 :to chnage Phone number ");
+                            Console.WriteLine("Enter 3 :to chnage Email Id ");
+                            Console.WriteLine("Enter 4 :to chnage address/city/zip code ");
+                            Console.WriteLine("Enter 5 :to chnage state");
+                            Console.WriteLine("Enter 6 :to exit");
+                            Console.WriteLine("----------------------------------------");
+
+                            Console.WriteLine("\n Enter choice from menu:");
+                            choice = Convert.ToInt32(Console.ReadLine());
+                            if (choice == 0)
+                            {
+                                Console.WriteLine("\n Invalid choice");
+
+
+                            }
+                            else
+                            {
+
+                                if (choice == 1)
+                                {
+                                    Console.WriteLine("Enter First new Name : ");
+                                    string newname = Console.ReadLine();
+                                    obj.setfame(newname);
+                                    Console.WriteLine("---------------------------------------------------");
+
+                                    Console.WriteLine("First name has been changed ");
+
+                                    Console.WriteLine("Enter new Last Name : ");
+                                    string newlname = Console.ReadLine();
+                                    obj.setlame(newlname);
+                                    Console.WriteLine("---------------------------------------------------");
+
+                                    Console.WriteLine("Last name has been changed ");
+
+
+
+                                    if (choice == 2)
+                                    {
+                                        Console.WriteLine("Enter new Phone number : ");
+                                        int newphone = Convert.ToInt32(Console.ReadLine());
+                                        obj.setphone(newphone);
+                                        Console.WriteLine("---------------------------------------------------");
+
+                                        Console.WriteLine("Phone number has been changed ");
+
+                                        if (choice == 3)
+                                        {
+                                            Console.WriteLine("Enter new Email Id : ");
+                                            string newmail = Console.ReadLine();
+                                            obj.setmail(newmail);
+                                            Console.WriteLine("---------------------------------------------------");
+
+                                            Console.WriteLine("Email has been changed ");
+
+
+                                            if (choice == 4)
+                                            {
+                                                Console.WriteLine("Enter address/house name/house number/street/society : ");
+                                                string newaddress = Console.ReadLine();
+                                                obj.setadds(newaddress);
+                                                Console.WriteLine("---------------------------------------------------");
+
+                                                Console.WriteLine("address has been changed ");
+
+                                                Console.WriteLine("Enter new City : ");
+                                                string newcity = Console.ReadLine();
+
+                                                obj.setcity(newcity);
+
+                                                Console.WriteLine("----------------------------------------");
+                                                Console.WriteLine("Enter new Zip code : ");
+                                                int newzip = Convert.ToInt32(Console.ReadLine());
+                                                obj.setzip(newzip);
+                                                Console.WriteLine("---------------------------------------------------");
+
+                                                Console.WriteLine("city and Zip code has been changed ");
+
+
+
+                                                if (choice == 5)
+                                                {
+                                                    Console.WriteLine("---------------------------------------------------");
+
+                                                    Console.WriteLine("Enter new State : ");
+                                                    string newstate = Console.ReadLine();
+                                                    obj.setstate(newstate);
+                                                    Console.WriteLine("---------------------------------------------------");
+
+                                                    Console.WriteLine("State has been changed ");
+
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("---------------------------------------------------");
+
+                        Console.WriteLine("Record is not found in Address Book");
+                    }
+                
+            }
+            return 0;
+        }
+
+        // Deleting record from address book
+        internal static int Delete(List<AddressBook> list, string fn, string ln)
+        {
+
+
+          bool flag = false;
+            foreach (var obj1 in list)
+            {
+
+                if (fn == obj1.fname && ln == obj1.lname)
+                {
+
+
+                    list.Remove(obj1);
+
+               flag = true;
+                    break;
+                }
+
+            }
+
+            if (flag)
+            {
+                Console.WriteLine("---------------------------------------------------");
+
+                Console.WriteLine("Record is deleted from Address Book");
+            }
+            else
+            {
+                Console.WriteLine("---------------------------------------------------");
+
+                Console.WriteLine("Record is not found in Address Book");
+            }
+            return 0;
+        }
+    }
+}
