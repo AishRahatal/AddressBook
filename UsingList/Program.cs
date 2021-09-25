@@ -63,6 +63,26 @@ namespace AddressBook
 
                             AddressBook.display(list);// calling display method
                             break;
+                           
+case 3: //UC2 - Adding  address
+                            Console.WriteLine("-----------------------------------------------------");
+
+                            Console.WriteLine("Adding address to the book:");
+                            Console.WriteLine("Enter no of people's address information want to store:");
+                            int n1 = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("-----------------------------------------------------");
+
+                            for (int i = 0; i < n1; i++)
+                            {
+                                AddressBook obj = AddressBook.accept(n1);// calling display function
+
+                                list.Add(obj);
+                            }
+                            Console.WriteLine("----------------------------------------------------");
+                            AddressBook.display(list);
+                            Console.WriteLine("----------------------------------------------------");
+
+                            break;
 }
                 }
                 else
